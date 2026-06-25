@@ -85,8 +85,8 @@ class Stock:
             if isinstance(event, ItemAdded):
                 items[event.name] = items.get(event.name, 0) + 1
             elif isinstance(event, ItemRemoved):
-                items[event.name] = items.get(event.name, 0) - 1
-    
+                items[event.name] = max(0, items.get(event.name, 0) - 1)
+
         return items
 
     def print_summary(self):
